@@ -1,6 +1,8 @@
 .App {
   min-height: 100vh;
-  display: flex;
-  min-width: 800px;
-  background: url('./imgs/catalina_day.jpg') center/100% no-repeat;
+  background: url('./imgs/catalina_day.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
