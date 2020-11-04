@@ -1,8 +1,10 @@
 name: Build and Deploy
 
 # Run this workflow every time a new commit pushed to your repository
-on: push
-  - master
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   # Set the job key. The key is displayed as the job name
@@ -21,8 +23,8 @@ jobs:
       # Runs the Super-Linter action
       - name: Install and Build 🔧
         run: |
-        yarn --frozen-lockfile
-        yarn build
+          yarn --frozen-lockfile
+          yarn build
 
       - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@3.7.1
