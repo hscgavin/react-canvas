@@ -1,9 +1,11 @@
-.docker {
+.dockerWrapper {
   position: fixed;
   bottom: 0;
   width: 100vw;
   display: flex;
   justify-content: center;
+}
+.docker {
   display: flex;
   align-items: flex-end;
   background-color: rgba(222, 223, 227, 0.7);

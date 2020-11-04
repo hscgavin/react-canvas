@@ -17,7 +17,7 @@ const Docker = (props: Props) => {
   const getOffset = useCallback(
     (el: HTMLElement, offset: 'top' | 'left'): number => {
       const elOffset = offset === 'top' ? el.offsetTop : el.offsetLeft;
-      if (el.offsetParent == null) {
+      if (el.offsetParent === null) {
         return elOffset;
       }
       return elOffset + getOffset(el.offsetParent as HTMLElement, offset);
@@ -65,19 +65,28 @@ const Docker = (props: Props) => {
       return;
     }
     const dockBackground: HTMLDivElement = dockRef.current;
-    dockBackground.addEventListener('mousemove', mousemove);
     dockBackground.addEventListener('mouseleave', mouseleave);
+    dockBackground.addEventListener('mousemove', mousemove);
     return () => {
-      dockBackground.removeEventListener('mousemove', mousemove);
       dockBackground.removeEventListener('mouseleave', mouseleave);
+      dockBackground.removeEventListener('mousemove', mousemove);
     };
   }, [mousemove, mouseleave]);
 
   return (
-    <div ref={dockRef} style={dockStyle} className={styles.docker}>
-      {dockList.map((item, index) => {
-        return <img src={item} alt={item} key={index + item} />;
-      })}
+    <div className={styles.dockerWrapper}>
+      <div ref={dockRef} style={dockStyle} className={styles.docker}>
+        {dockList.map((item, index) => {
+          return (
+            <img
+              src={item}
+              alt={item}
+              key={index + item}
+              width={defaultWidth}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
